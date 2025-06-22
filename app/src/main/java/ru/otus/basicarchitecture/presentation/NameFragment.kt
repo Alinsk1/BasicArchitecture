@@ -1,19 +1,20 @@
-package ru.otus.basicarchitecture
+package ru.otus.basicarchitecture.presentation
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import ru.otus.basicarchitecture.R
 import ru.otus.basicarchitecture.databinding.FragmentNameBinding
 
 @AndroidEntryPoint
 class NameFragment : Fragment() {
-    
+
     private var _binding: FragmentNameBinding? = null
     private val binding: FragmentNameBinding
         get() = _binding ?: throw RuntimeException("FragmentNameBinding == null")
@@ -105,7 +106,7 @@ class NameFragment : Fragment() {
         viewModel.canContinue.observe(viewLifecycleOwner) {
             if (it){
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainContainer, AddressFragment.newInstance())
+                    .replace(R.id.mainContainer, AddressFragment.Companion.newInstance())
                     .commit()
             }
         }
@@ -113,7 +114,7 @@ class NameFragment : Fragment() {
 
     private fun addTextChangedListeners(){
         with(binding){
-            editTextName.addTextChangedListener(object : TextWatcher{
+            editTextName.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,
@@ -134,7 +135,7 @@ class NameFragment : Fragment() {
                 override fun afterTextChanged(s: Editable?) {
                 }
             })
-            editTextSurname.addTextChangedListener(object : TextWatcher{
+            editTextSurname.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,
@@ -155,7 +156,7 @@ class NameFragment : Fragment() {
                 override fun afterTextChanged(s: Editable?) {
                 }
             })
-            editTextBirthday.addTextChangedListener(object : TextWatcher{
+            editTextBirthday.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,

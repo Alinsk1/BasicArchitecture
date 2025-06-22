@@ -1,4 +1,4 @@
-package ru.otus.basicarchitecture
+package ru.otus.basicarchitecture.domain
 
 
 data class UserName(
@@ -10,5 +10,8 @@ data class UserName(
 data class UserAddress(
     var country: String,
     var city: String,
-    var address: String
+    var street: String,
+    var house: String,
+    var block: String,
+    var fullAddress: String
 )

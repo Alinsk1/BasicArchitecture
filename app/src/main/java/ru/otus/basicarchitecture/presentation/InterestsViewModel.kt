@@ -1,4 +1,4 @@
-package ru.otus.basicarchitecture
+package ru.otus.basicarchitecture.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

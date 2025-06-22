@@ -1,17 +1,18 @@
-package ru.otus.basicarchitecture
+package ru.otus.basicarchitecture.presentation
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
+import ru.otus.basicarchitecture.R
 import ru.otus.basicarchitecture.databinding.FragmentResultBinding
-import kotlin.getValue
 
 @AndroidEntryPoint
 class ResultFragment : Fragment() {
@@ -46,16 +47,13 @@ class ResultFragment : Fragment() {
                 textViewName.text = it.name
                 textViewSurname.text = it.surname
                 textViewBirthday.text = it.birthday
+                Log.d("ResultFragment", it.toString())
             }
         }
         viewModel.userAddress.observe(viewLifecycleOwner) {
             with(binding){
-                textViewAddress.text = String.format(
-                    resources.getString(R.string.address_mask),
-                    it.country,
-                    it.city,
-                    it.address
-                )
+                textViewAddress.text = it.fullAddress
+                Log.d("ResultFragment", it.toString())
             }
         }
         viewModel.interests.observe(viewLifecycleOwner) {
@@ -63,6 +61,7 @@ class ResultFragment : Fragment() {
             with(binding){
                 it.forEach { interest ->
                     val chip = Chip(requireContext()).apply {
+                        Log.d("ResultFragment", interest)
                         text = interest
                         chipBackgroundColor = ColorStateList.valueOf(defaultColor)
                     }
@@ -70,6 +69,11 @@ class ResultFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

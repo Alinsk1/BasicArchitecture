@@ -1,9 +1,11 @@
-package ru.otus.basicarchitecture
+package ru.otus.basicarchitecture.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import ru.otus.basicarchitecture.domain.UserAddress
+import ru.otus.basicarchitecture.domain.UserName
 import javax.inject.Inject
 
 @HiltViewModel

@@ -1,18 +1,18 @@
-package ru.otus.basicarchitecture
+package ru.otus.basicarchitecture.presentation
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
+import ru.otus.basicarchitecture.R
 import ru.otus.basicarchitecture.databinding.FragmentInterestsBinding
-import kotlin.getValue
 
 @AndroidEntryPoint
 class InterestsFragment : Fragment() {
@@ -46,7 +46,7 @@ class InterestsFragment : Fragment() {
         viewModel.canContinue.observe(viewLifecycleOwner) {
             if (it){
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainContainer, ResultFragment.newInstance())
+                    .replace(R.id.mainContainer, ResultFragment.Companion.newInstance())
                     .commit()
             } else {
                 Toast.makeText(requireContext(), "It is necessary to mark at least one tag", Toast.LENGTH_SHORT).show()

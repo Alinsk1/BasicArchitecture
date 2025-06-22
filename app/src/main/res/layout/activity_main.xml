@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".presentation.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="ru.otus.basicarchitecture.NameFragment"/>
+        android:name="ru.otus.basicarchitecture.presentation.NameFragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
