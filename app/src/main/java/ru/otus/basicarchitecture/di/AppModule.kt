@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.otus.basicarchitecture.data.AddressApiService
 import ru.otus.basicarchitecture.data.AddressRepositoryImpl
 import ru.otus.basicarchitecture.domain.AddressRepository
+import ru.otus.basicarchitecture.domain.AddressSuggestUseCase
 import ru.otus.basicarchitecture.presentation.WizardCache
 import javax.inject.Singleton
 
@@ -38,5 +39,11 @@ object AppModule {
     @Singleton
     fun provideAddressRepository(impl: AddressRepositoryImpl): AddressRepository {
         return impl
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddressSuggestUseCase(repository: AddressRepository): AddressSuggestUseCase {
+        return AddressSuggestUseCase(repository)
     }
 }

@@ -15,10 +15,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AddressViewModel @Inject constructor(
     private val wizardCache: WizardCache,
-    private val addressRepository: AddressRepository
+    private val addressSuggestUseCase: AddressSuggestUseCase
 ): ViewModel() {
-
-    private val addressSuggestUseCase = AddressSuggestUseCase(addressRepository)
 
     private var _canContinue = MutableLiveData<Boolean>(false)
     val canContinue: LiveData<Boolean>
